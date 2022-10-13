@@ -1,0 +1,36 @@
+Note A:
+  Por padrão, componentes que dependem de algo do contexto são atualizados após
+  qualquer mudança nele.
+  Há uma biblioteca para criação de contexto
+  que faz com que não sejam renderizados novamente os componentes que não
+  dependem de informações atualizadas do contexto.
+  Contudo, é preciso usar o useCallback para que funções passadas pelo contexto
+  não sejam recriadas novamente em memória, o que configuraria uma "alteração".
+  Vale notar que uma renderização do elemento do pai não evitará a renderização nova.
+
+
+Nota B:
+  Por quê um componente renderiza?
+  - Hooks mudam (mudou estado, contexto, reducer, formulário)
+  - Props mudam
+  - Elemento pai é reprocessado 
+
+  Qual o fluxo de renderização?
+  1. O React recria o HTML da interface daquele componente
+  2. Compara a versão do HTML recriado com a versão anterior
+  3. Se mudou alguma coisa, ele rescreve o HTML na tela
+
+  Logo, para componentes com um longo HTML, convém evitar que ele seja renderizado
+  sucessivamente a toa, se não há alteração de fato em nada dele ou em algo de que ele
+  dependa.
+
+  Memo: 
+    O memo adiciona um passo a mais no fluxo acima, antes de todos. Ele verifica
+    se hooks e propriedades do elemento foram alterados, se não forem, ele não 
+    permitirá a renderização novamente, nem se o elemento pai for alterado.
+
+    Como o Memo adiciona um passo a mais no fluxo, só é útil usá-lo quando o componente
+    for realmente muito pesado, a ponto de compensar a substituição de tempos.
+
+Nota C:
+  Pode-se usar o hook useMemo para evitar-se a recriação de valores computados.
