@@ -1,5 +1,5 @@
 import { HeaderContainer, HeaderContent, NewTransactionButton } from './styles'
-import logo from '../../assets/logo.svg'
+import logo from '../../assets/logo.png'
 import * as Dialog from '@radix-ui/react-dialog'
 import { NewTransaction } from '../NewTransaction'
 export function Header() {

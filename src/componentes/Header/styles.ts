@@ -13,6 +13,10 @@ export const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  img {
+    width: 80px;
+    height: 80px;
+  }
 `
 
 export const NewTransactionButton = styled.button`
